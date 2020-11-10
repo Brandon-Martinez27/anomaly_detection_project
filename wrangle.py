@@ -44,4 +44,6 @@ def wrangle_logs():
     # change start and end dates to a datetime type
     df['start_date'] = pd.to_datetime(df.start_date)
     df['end_date'] = pd.to_datetime(df.end_date)
+    # dropped all observations with '/' as page. This is the homepage.
+    df = df.drop(df[df.page == '/'].index)
     return df, no_id
