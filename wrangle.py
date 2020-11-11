@@ -46,4 +46,6 @@ def wrangle_logs():
     df['end_date'] = pd.to_datetime(df.end_date)
     # dropped all observations with '/' as page. This is the homepage.
     df = df.drop(df[df.page == '/'].index)
+    # remove staff from the data
+    df = df[df.name != 'Staff']
     return df, no_id
