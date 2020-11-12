@@ -48,4 +48,12 @@ def wrangle_logs():
     df = df.drop(df[df.page == '/'].index)
     # remove staff from the data
     df = df[df.name != 'Staff']
+
+    # adds column to show how many days the user have been active based on current date
+    df['days_active'] = (df.index - df.start_date).dt.days
+    # adds column to show how long the programs lasts in days
+    df['program_length'] = (df.end_date - df.start_date).dt.days
+    # adds column to show how days user accessed the curriculum after graduating
+    df['post_access'] = (df.index - df.end_date).dt.days
+    
     return df, no_id
