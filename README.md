@@ -1,1 +1,1 @@
-Time Series Project
+Anomaly Detection Project
